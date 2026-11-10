@@ -20,7 +20,7 @@ The wire protocol is documented in [PROTOCOL.md](PROTOCOL.md).
 > On an Intel Mac, build from source (see [Build & run](#build--run)).
 
 1. Go to [**Releases**](../../releases/latest) and download
-   `DJI Mic Control_1.1.0_aarch64.dmg`.
+   `DJI.Mic.Control_1.1.0_aarch64.dmg`.
 2. Open the `.dmg` and drag **DJI Mic Control** into **Applications**.
 3. **Before opening it**, open Terminal and run this once (it will ask for your
    Mac password):
