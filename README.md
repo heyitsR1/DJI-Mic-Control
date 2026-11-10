@@ -14,14 +14,45 @@ required.
 
 The wire protocol is documented in [PROTOCOL.md](PROTOCOL.md).
 
-## macOS "DJI Mic Control.app is damaged and can't be opened"
+## Download & install (Mac)
 
-macOS's security "gatekeeper" does not like that this app is not signed with an Apple developer account. Unfortunately, this means macOS will refuse to open an app downloaded unless you release it from quarantine.
+> The ready-made download is for **Apple Silicon Macs** (M1/M2/M3/M4 etc.).
+> On an Intel Mac, build from source (see [Build & run](#build--run)).
 
-After copying the app from the dmg to Applications, execute the following command to clear the quarantine flag:
-```bash
-sudo xattr -rd com.apple.quarantine /Applications/DJI\ Mic\ Control.app
-```
+1. Go to [**Releases**](../../releases/latest) and download
+   `DJI Mic Control_1.1.0_aarch64.dmg`.
+2. Open the `.dmg` and drag **DJI Mic Control** into **Applications**.
+3. **Before opening it**, open Terminal and run this once (it will ask for your
+   Mac password):
+   ```bash
+   sudo xattr -rd com.apple.quarantine "/Applications/DJI Mic Control.app"
+   ```
+   The app isn't signed with a paid Apple developer account, so without this
+   step macOS says *"DJI Mic Control.app is damaged and can't be opened."*
+   It isn't damaged. This just tells macOS you trust it.
+4. Plug the DJI receiver into the Mac over USB and open the app. The receiver
+   shows up in the sidebar, and every setting can be changed from there.
+5. *(Optional)* Use the side button as a keyboard shortcut, e.g. for
+   dictation apps. See [Side button remapping](#side-button-remapping-macos)
+   below. macOS will ask for **Input Monitoring** and **Accessibility**
+   permissions. Grant both in System Settings → Privacy & Security, then
+   reopen the app.
+
+## Credits
+
+This repo is a fork that packages a ready-to-download Mac build. All the real
+work is from:
+
+- [**ShadowBitBasher/DJI-Mic-Control**](https://github.com/ShadowBitBasher/DJI-Mic-Control):
+  the original app, the protocol reverse-engineering and [PROTOCOL.md](PROTOCOL.md).
+- [**TongkunZhang/DJI-Mic-Control**](https://github.com/TongkunZhang/DJI-Mic-Control):
+  the fork that added side-button → keyboard-shortcut remapping on macOS,
+  ported from [TongkunZhang/dji-mic](https://github.com/TongkunZhang/dji-mic).
+- [**jonnilundy/dictate-dji**](https://github.com/jonnilundy/dictate-dji):
+  the idea behind the side-button remapping.
+
+Windows and Linux builds of the original app (without side-button remapping)
+are on the [upstream releases page](https://github.com/ShadowBitBasher/DJI-Mic-Control/releases).
 
 ## Side button remapping (macOS)
 
